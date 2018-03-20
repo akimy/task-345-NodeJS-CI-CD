@@ -12,6 +12,9 @@ module.exports = {
         "no-underscore-dangle": "off",
         "no-loop-func": "off",
         "no-param-reassign": "off",
+        "no-console": "off",
+        "no-use-before-define": "off",
+        "no-shadow": "off",
     },
     "globals": {
         "window": true,
