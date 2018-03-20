@@ -6,7 +6,7 @@ COPY . .
 
 ENV NODE_ENV=development
 
-RUN npm install --quient
+RUN npm install
 RUN npm run build
 
 CMD npm start
