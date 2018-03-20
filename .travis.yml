@@ -1,38 +1,40 @@
 sudo: false
 language: node_js
 node_js:
- - "9"
+- '9'
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 script:
-  - npm run lint
-  - npm run stylelint
-  - npm run build
-
+- npm run lint
+- npm run stylelint
+- npm run build
 aliases:
-  deploy: &deploy
+  deploy:
     provider: heroku
-    api_key: 
-      secure: Jh3vRIBtfn2oeTVbs6QhNRcha420/6zQFWUudaQu9ivKmrtb0p2sX5K562orE4Fufi5OTulEd83NJzYDEimPTPeiH94gRzjPTveslTN9Lm1eBWZsJzl+1pXaLWCWr5kilp4KeomhDllnvRddTxJ+wlGUmyFBu1af+/3uF2q7TtNaQmwyCTJEBv2d84Li2wpYfOJvHEHirzcErDnXEYzaciNAiHn5x3VHv8m1A+dZT3XLu11qc9tiw0L4z8Zyt3lZCQZ3meOnefDzp0l/ja4SDbv9M7iUPhGU0tcYLGcw4ZLiHGmFSQmKhl/jr39r875+y3MY+JrQLAYzDtU5v85Sk64HPVn3f9KX7pPpyY8iHftEuS3lKDeDS/ttho8Q8PXOl1LD3Wyo8nHBEqP75zihnk51OdtcAwninUX1xvM4d8Tt1oTdDh+VjmSDWN1woAAKTivv5hbd8m1ov0Zy5REeX5IxBOulIvX8woSScNJcL3OKxNqxo6eTTWqkJooYSXWSlSaNHT9uS41QZDpHNMTSEPUDCtIiiNjXJXfpWKdnSptwjThGwiUsspWV3DpDV2y3KX+hcJ8AUmnoaj6I3tWlDcwBo7VnuEAJ42hOZGxaOp3ntYOPGRm+6CBMNDLpWpwZ2nO1mTU618b9U4drRlXsL6C8zoLP9cCmzO07lArvHRs=
-    skip_cleanup: true
-
+    api_key:
+      secure: bq88GdumwMqiMbKRSS4c0JfS/VoROHxyNxSTVaE30+wyThJDDsidGxt5K+6pMsMtV3W+kprJxBWu9UIHUNctsj0YLuM7NIdbrWQh3vWwg7r3HNIflK8lFM0taquGk4ohVHeS7bDSe3EVQVGQep2XjrGkEybNe/utrrHVopIKsAsyk/3forE8O0iuaM3d8setpaxq9Zt8TLi+UzJcom0gptw6eInyCWrZRgymzHxFSoOBIt0boNNmwT8sKHKUKrd62p1d6bx70XCT3LFUme+RzYF513UTacbxBB6YgKSuPe6YOFqLzE7OsDbGQbSX34ItSZ3hfSyYE8heEyoko2tp5/u+lEy7JfGELNSclf39SwGFh4QdINRL/JosnS64AyUzhzw9RnPZfX8UVZBWn7QU3Fnob49hCg3XogxQ6z4glLr1qEsIXyc20TdsxVbYQQShW5YZKuT9zF7vYyhj1MFgYrPrAPbP+40BpRVP04VJWf+euNAHNgT3pDzrU4bCWhCpccbt5CWO6gpcVmTuXbwLSA8EOBOYu9kdd34YB/CORJXPHf1VJqGShSZstFowX8KqrSax1XyOfL9bprEcuoqNzzugKLAE9x95geDCaJJfsDVt+czgXzoaIZ04SvCiixjUF5WgztGmENuijGwg8qIt7n9SQ8/Wnhc+v1QeBgFZeGI=
+    on:
+      repo: akimy/task-345-NodeJS-CI-CD
 jobs:
   include:
-    - stage: Deploy (development)
-      if: tag IS blank
-      script:
-        - npm run build
-      deploy:
-        <<: *deploy
-        app: yandex-shri-task-456
-
-    - stage: Deploy (production)
-      if: tag IS present
-      script:
-        - npm run build
-      deploy:
-        <<: *deploy
-        app: yandex-shri-task-456
-        on:
-          tags: true
+  - stage: Deploy (development)
+    if: tag IS blank
+    script:
+    - npm run build
+    deploy:
+      provider: heroku
+      api_key: *1
+      skip_cleanup: true
+      app: yandex-shri-task-456
+  - stage: Deploy (production)
+    if: tag IS present
+    script:
+    - npm run build
+    deploy:
+      provider: heroku
+      api_key: *1
+      skip_cleanup: true
+      app: yandex-shri-task-456
+      on:
+        tags: true
