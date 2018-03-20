@@ -1,7 +1,7 @@
 FROM node:slim
 WORKDIR /usr/src/app
 COPY . .
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 RUN npm install
-RUN npm build
-CMD npm start
+CMD npm run build
+CMD npm run start
