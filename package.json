@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node ./bin/www",
-    "lint": "eslint . ; exit 0",
-    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "start": "./bin/www",
+    "lint": "eslint .",
+    "dev": "nodemon ./bin/www  && cross-env NODE_ENV=development webpack --progress --hide-modules",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "repository": {
