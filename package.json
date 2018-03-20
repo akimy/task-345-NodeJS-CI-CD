@@ -43,6 +43,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "extract-text-webpack-plugin": "^3.0.2",
+    "husky": "^0.15.0-rc.9",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
     "postcss-loader": "^2.1.2",
@@ -52,5 +53,11 @@
     "stylelint-scss": "^2.5.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^3.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run stylelint",
+      "pre-push": "npm run lint"
+    }
   }
 }
