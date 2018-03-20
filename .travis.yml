@@ -11,5 +11,31 @@ script:
   - npm run build
 deploy:
   provider: heroku
-  api_key: 0342da50-b8e9-41ae-b431-40cdfd0f2db2
+  api_key: 
   app: yandex-shri-task-456
+
+aliases:
+  deploy: &deploy
+    provider: heroku
+    api_key: 0342da50-b8e9-41ae-b431-40cdfd0f2db2
+    skip_cleanup: true
+
+jobs:
+  include:
+    - stage: Deploy (development)
+      if: tag IS blank
+      script:
+        - npm run build
+      deploy:
+        <<: *deploy
+        app: yandex-shri-task-456
+
+    - stage: Deploy (production)
+      if: tag IS present
+      script:
+        - npm run build
+      deploy:
+        <<: *deploy
+        app: yandex-shri-task-456
+        on:
+          tags: true
