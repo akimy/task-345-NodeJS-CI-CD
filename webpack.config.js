@@ -8,8 +8,8 @@ const inProduction = env === 'production';
 const inDevelopment = env === 'development';
 
 const config = {
-  entry: './public/src/javascripts/index.js',
-  output: { path: `${__dirname}/public/build`, filename: 'bundle.js' },
+  entry: './resources/assets/js/index.js',
+  output: { path: `${__dirname}/public`, filename: 'bundle.js' },
   resolve: { extensions: ['.js'] },
   watch: inDevelopment,
   module: {
