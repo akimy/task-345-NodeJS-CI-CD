@@ -9,7 +9,7 @@ const inDevelopment = env === 'development';
 
 const config = {
   entry: './resources/assets/js/index.js',
-  output: { path: `${__dirname}/public`, filename: 'bundle.js' },
+  output: { filename: './public/bundle.js' },
   resolve: { extensions: ['.js'] },
   watch: inDevelopment,
   module: {
@@ -51,7 +51,7 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'styles.css',
+      filename: './public/styles.css',
     }),
   ],
 };
