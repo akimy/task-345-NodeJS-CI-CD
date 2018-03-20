@@ -5,6 +5,16 @@ cache:
   directories:
     - "node_modules"
 script:
- - npm run lint
- - npm run stylelint
- - npm run build
+  - npm run lint
+  - npm run stylelint
+  - npm run build
+jobs:
+  include:
+    - stage: Deploy
+      script:
+        -npm run build
+      deploy:
+        provider: heroku
+        app: shri-task-3-akimy
+        api_key: 0342da50-b8e9-41ae-b431-40cdfd0f2db2
+        skip_cleanup: true
