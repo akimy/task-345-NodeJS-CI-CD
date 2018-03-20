@@ -11,4 +11,4 @@ script:
 deploy:
   provider: heroku
   api_key: 0342da50-b8e9-41ae-b431-40cdfd0f2db2
-  app: yandex-shri-task-3
+  app: yandex-shri-task-456
