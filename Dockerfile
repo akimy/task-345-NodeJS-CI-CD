@@ -1,11 +1,13 @@
 FROM node:9
 
-ADD ./ /app
-WORKDIR /app
+RUN mkdir -p /usr/src/app/
+WORKDIR /usr/src/app/
 
-ENV NODE_ENV=production
+COPY package.json . 
+
 RUN git clone https://github.com/mrmlnc/scandir-native.git --mirror repository
 RUN npm install
+COPY . .
 RUN npm run build
 
 CMD npm start
