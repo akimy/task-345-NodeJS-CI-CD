@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h1= title
+  if (fileStructure && fileStructure.length > 0)
+    ul.dir
+      each file in fileStructure
+        li
+          if (file.type === 'tree')
+            span.dir__emblem
+              | DIR
+            a(href=`/dir/${file.hash}`)
+              = file.name
+          else
+            a(href=`/files/${file.hash}`)
+              = file.name

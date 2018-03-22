@@ -1,0 +1,18 @@
+.commits {
+  width: 100%;
+}
+
+.commits__head {
+  background-color: #84d6b4;
+}
+
+.commits__hash,
+.commits__date {
+  min-width: 90px;
+  text-align: center;
+}
+
+.commits__author {
+  min-width: 160px;
+  text-align: left;
+}

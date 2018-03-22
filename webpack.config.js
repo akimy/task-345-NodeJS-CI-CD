@@ -3,13 +3,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
 const inProduction = env === 'production';
 const inDevelopment = env === 'development';
 
 const config = {
   entry: './resources/assets/js/index.js',
-  output: { filename: './public/bundle.js' },
+  output: { path: path.resolve(__dirname, 'public'), filename: 'bundle.js' },
   resolve: { extensions: ['.js'] },
   watch: inDevelopment,
   module: {
@@ -36,14 +37,13 @@ const config = {
         test: /\.(png|svg|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          name: 'images/[name].[ext]',
+          name: '[name].[ext]',
         },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         loader: 'file-loader',
         options: {
-          publicPath: '',
           name: 'fonts/[name].[ext]',
         },
       },
@@ -51,7 +51,7 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: './public/styles.css',
+      filename: 'styles.css',
     }),
   ],
 };

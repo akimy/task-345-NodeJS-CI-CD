@@ -1,5 +1,24 @@
 h1 {
-  color: rgb(140, 150, 0);
-  display: block;
-  position: relative;
+  border-bottom: 2px dashed;
+  color: #005f6b;
+  font-family: 'anonymus', 'Courier New', Courier, monospace;
+  margin: 25px 0 10px;
+}
+
+body {
+  font-family: 'anonymus', 'Courier New', Courier, monospace;
+  font-size: 14px;
+  margin: 0;
+}
+
+.container {
+  margin: auto;
+  width: 1040px;
+}
+
+@media (max-width: 1040px) {
+  .container {
+    padding: 15px;
+    width: 100%;
+  }
 }
