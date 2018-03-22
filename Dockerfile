@@ -5,7 +5,7 @@ WORKDIR /usr/src/app/
 
 COPY package.json . 
 
-RUN git clone https://github.com/mrmlnc/scandir-native.git --mirror repository
+RUN git clone https://github.com/mrmlnc/scandir-native.git repository
 RUN npm install
 COPY . .
 RUN npm run build
