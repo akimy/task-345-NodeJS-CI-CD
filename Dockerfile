@@ -6,7 +6,7 @@ COPY . .
 
 ENV NODE_ENV=production
 
-RUN git clone ./repo https://github.com/facebook/react.git
+RUN git clone https://github.com/facebook/react.git repo
 RUN npm install --quiet
 RUN npm run build
 
