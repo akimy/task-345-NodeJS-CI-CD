@@ -62,7 +62,9 @@ class GitHelper {
 
   getCommits(hash) {
     return new Promise((resolve, reject) => {
-      this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`)
+      this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`, {
+        cwd: '/repo',
+      })
         .then((res) => {
           resolve(this.parseCommits(res.stdout));
         })
@@ -74,7 +76,9 @@ class GitHelper {
 
   getBranches() {
     return new Promise((resolve, reject) => {
-      this.exec('git branch -v')
+      this.exec('git branch -v', {
+        cwd: '/repo',
+      })
         .then((res) => {
           this.branches = this.parseBranches(res.stdout);
           resolve(this.branches);
@@ -86,7 +90,9 @@ class GitHelper {
 
   getDir(hash) {
     return new Promise((resolve, reject) => {
-      this.exec(`git ls-tree --full-name ${hash}`)
+      this.exec(`git ls-tree --full-name ${hash}`, {
+        cwd: '/repo',
+      })
         .then((res) => {
           const dir = this.parseDir(res.stdout);
           resolve(dir);
@@ -99,7 +105,9 @@ class GitHelper {
 
   getGraph() {
     return new Promise((resolve, reject) => {
-      this.exec('git log --graph --oneline --all')
+      this.exec('git log --graph --oneline --all', {
+        cwd: '/repo',
+      })
         .then((res) => {
           resolve(res.stdout);
         })
@@ -111,7 +119,9 @@ class GitHelper {
 
   getFileData(hash) {
     return new Promise((resolve, reject) => {
-      this.exec(`git cat-file blob ${hash}`)
+      this.exec(`git cat-file blob ${hash}`, {
+        cwd: '/repo',
+      })
         .then((res) => {
           resolve(res.stdout);
         })

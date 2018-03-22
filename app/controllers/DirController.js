@@ -15,7 +15,7 @@ class DirController {
       });
     } catch (error) {
       res.render('error', {
-        title: 'Ошибка во время получения коммитов',
+        message: 'Ошибка во время получения коммитов',
         error,
       });
     }
