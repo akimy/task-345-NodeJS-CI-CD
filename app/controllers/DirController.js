@@ -7,11 +7,18 @@ class DirController {
 
   async getFileStructure(req, res) {
     const { params: { hash } } = req;
-    const fileStructure = await this.git.getDir(hash);
-    res.render('pages/fileStructure', {
-      title: 'CATALOG TREE',
-      fileStructure,
-    });
+    try {
+      const fileStructure = await this.git.getDir(hash);
+      res.render('pages/fileStructure', {
+        title: 'CATALOG TREE',
+        fileStructure,
+      });
+    } catch (error) {
+      res.render('error', {
+        title: 'Ошибка во время получения коммитов',
+        error,
+      });
+    }
   }
 }
 

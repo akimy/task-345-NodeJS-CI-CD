@@ -11,11 +11,7 @@ class GitHelper {
   }
 
   getBranchDataFromString(arr) {
-    const [
-      name,
-      hash,
-      ...message
-    ] = arr;
+    const [name, hash, ...message] = arr;
 
     return {
       name,
@@ -65,13 +61,13 @@ class GitHelper {
   }
 
   getCommits(hash) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`)
         .then((res) => {
           resolve(this.parseCommits(res.stdout));
         })
-        .catch((err) => {
-          throw err;
+        .catch((error) => {
+          reject(error);
         });
     });
   }
@@ -82,45 +78,45 @@ class GitHelper {
         .then((res) => {
           this.branches = this.parseBranches(res.stdout);
           resolve(this.branches);
-        }).catch((err) => {
-          reject(err);
+        }).catch((error) => {
+          reject(error);
         });
     });
   }
 
   getDir(hash) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.exec(`git ls-tree --full-name ${hash}`)
         .then((res) => {
           const dir = this.parseDir(res.stdout);
           resolve(dir);
         })
-        .catch((err) => {
-          throw (err);
+        .catch((error) => {
+          reject(error);
         });
     });
   }
 
   getGraph() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.exec('git log --graph --oneline --all')
         .then((res) => {
           resolve(res.stdout);
         })
-        .catch((err) => {
-          throw (err);
+        .catch((error) => {
+          reject(error);
         });
     });
   }
 
   getFileData(hash) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.exec(`git cat-file blob ${hash}`)
         .then((res) => {
           resolve(res.stdout);
         })
-        .catch((err) => {
-          throw (err);
+        .catch((error) => {
+          reject(error);
         });
     });
   }

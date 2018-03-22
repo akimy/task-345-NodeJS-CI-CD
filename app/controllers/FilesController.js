@@ -9,7 +9,6 @@ class FilesController {
     const { params: { hash } } = req;
     try {
       const fileData = await this.git.getFileData(hash);
-      console.log(fileData);
       res.render('pages/fileData', {
         title: 'FILE DATA',
         fileData,
