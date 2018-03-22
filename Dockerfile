@@ -9,4 +9,4 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-CMD ["getbranches.sh", "git --git-dir ./repository/.git pull --all", "npm start"]
+CMD ["npm start"]
