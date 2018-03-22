@@ -4,7 +4,7 @@ RUN mkdir -p /usr/src/app/
 WORKDIR /usr/src/app/
 
 COPY package.json . 
-
+COPY getbranches.sh .
 RUN git clone https://github.com/mrmlnc/scandir-native.git repository
 RUN getbranches.sh
 RUN git --git-dir ./repository/.git pull --all
