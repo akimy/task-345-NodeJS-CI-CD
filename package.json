@@ -11,7 +11,7 @@
     "webpack_watch": "cross-env NODE_ENV=development webpack --progress --hide-modules",
     "start": "./bin/www",
     "dev": "npm-run-all --parallel nodemon webpack_watch",
-    "build": "cross-env NODE_ENV=production && webpack --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "fix": "eslint . --fix"
   },
   "repository": {

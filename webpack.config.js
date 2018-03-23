@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 const inProduction = env === 'production';
+console.log(inProduction ? 'prod' : 'dev');
 const inDevelopment = env === 'development';
 
 const config = {
@@ -29,9 +30,6 @@ const config = {
         test: /.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015'],
-        },
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -57,15 +55,9 @@ const config = {
 };
 
 if (inProduction) {
-  config.plugins.push(new UglifyJsPlugin({
-    sourceMap: true,
-  }));
+  config.plugins.push(new UglifyJsPlugin());
   config.plugins.push(new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production'),
-  }));
-} else {
-  config.plugins.push(new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('development'),
   }));
 }
 
