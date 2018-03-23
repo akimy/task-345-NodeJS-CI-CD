@@ -1,14 +1,14 @@
 sudo: false
 language: node_js
 node_js:
-  - '9'
+- 9
 
 install:
-  - npm install
+- npm install
 script:
-  - bundle exec npm run test
-  - bundle exec npm run lint
-  - bundle exec npm run stylelint
+- npm run test
+- npm run lint
+- npm run stylelint
 
 aliases:
   deploy: &deploy
