@@ -23,5 +23,7 @@ module.exports = {
         "document": true,
         "AudioContext": true,
         "URL": true,
+        "describe": true,
+        "it": true,
     }
 };

@@ -4,6 +4,7 @@ class BranchController {
   constructor(git) {
     this.git = git;
   }
+
   getBranchesList(req, res) {
     Promise.all([this.git.getBranches(), this.git.getGraph()])
       .then(([branches, graph]) => {

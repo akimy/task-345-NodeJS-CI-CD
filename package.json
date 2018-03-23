@@ -4,7 +4,7 @@
   "description": "NodeJS, CI, CD",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "mocha ./tests --reporter spec",
     "lint": "eslint .",
     "stylelint": "stylelint \"**/*.scss\"",
     "nodemon": "nodemon ./bin/www",
@@ -37,6 +37,7 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-latest": "^6.24.1",
+    "chai": "^4.1.2",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.0",
@@ -47,6 +48,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "husky": "^0.15.0-rc.9",
+    "mocha": "^5.0.5",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.2",
@@ -60,7 +62,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm-run-all --parallel lint stylelint"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm-run-all --parallel lint stylelint test"
     }
   }
 }
