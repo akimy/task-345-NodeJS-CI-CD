@@ -2,6 +2,8 @@ extends ../layout
 
 block content
   h1= title
+  a(href="/").navigation-link < return to branch list
+  span.navigation-link.navigation-link__back < back
   if (commits && commits.length > 0)
     table.commits
       thead.commits__head
@@ -16,7 +18,7 @@ block content
         tbody
           each commit, i in commits
             tr
-              td= i
+              td= commits.length - i
               td.commits__hash= commit.hash
               td= commit.message
               td.commits__author= commit.author

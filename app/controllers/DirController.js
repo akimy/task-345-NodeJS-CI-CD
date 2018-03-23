@@ -8,7 +8,8 @@ class DirController {
   async getFileStructure(req, res) {
     const { params: { hash } } = req;
     try {
-      const fileStructure = await this.git.getDir(hash);
+      let fileStructure = await this.git.getDir(hash);
+      fileStructure = fileStructure.sort(file => (file.type === 'tree' ? -1 : 1));
       res.render('pages/fileStructure', {
         title: 'CATALOG TREE',
         fileStructure,

@@ -2,6 +2,8 @@ extends ../layout
 
 block content
   h1= title
+  a(href="/").navigation-link < return to branch list
+  span.navigation-link.navigation-link__back < back
   if (fileStructure && fileStructure.length > 0)
     ul.dir
       each file in fileStructure
