@@ -4,15 +4,19 @@ block content
   h1= title
   a(href="/").navigation-link < return to branch list
   span.navigation-link.navigation-link__back < back
-  if (fileStructure && fileStructure.length > 0)
+  if (dirs && dirs.length > 0)
     ul.dir
-      each file in fileStructure
-        li
-          if (file.type === 'tree')
-            span.dir__emblem
-              | DIR
-            a(href=`/dir/${file.hash}`)
-              = file.name
-          else
-            a(href=`/files/${file.hash}`)
-              = file.name
+      each dir in dirs
+        li.dir__item
+          span.dir__emblem-dir
+            | DIR
+          a(href=`/dir/${dir.hash}`).dir__item-link
+            = dir.name
+  if (files && files.length > 0)
+    ul.dir
+      each file in files
+        li.dir__item
+          span.dir__emblem-file
+              | F
+          a(href=`/files/${file.hash}`).dir__item-link
+            = file.name

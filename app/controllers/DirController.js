@@ -5,18 +5,24 @@ class DirController {
     this.git = git;
   }
 
+  lexicalSort(arr) {
+    return arr.sort();
+  }
+
   async getFileStructure(req, res) {
     const { params: { hash } } = req;
     try {
-      let fileStructure = await this.git.getDir(hash);
-      fileStructure = fileStructure.sort(file => (file.type === 'tree' ? -1 : 1));
+      const fileStructure = await this.git.getDir(hash);
+      const dirs = this.lexicalSort(fileStructure.filter(el => el.type === 'tree'));
+      const files = this.lexicalSort(fileStructure.filter(el => el.type !== 'tree'));
       res.render('pages/fileStructure', {
         title: 'CATALOG TREE',
-        fileStructure,
+        dirs,
+        files,
       });
     } catch (error) {
       res.render('error', {
-        message: 'Ошибка во время получения коммитов',
+        message: 'An error occurred while getting the file structure',
         error,
       });
     }

@@ -15,7 +15,7 @@ class CommitsController {
       });
     } catch (error) {
       res.render('error', {
-        message: 'Ошибка во время получения коммитов',
+        message: 'An error occurred while getting the commits',
         error,
       });
     }

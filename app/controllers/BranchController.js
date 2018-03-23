@@ -15,7 +15,7 @@ class BranchController {
       })
       .catch((error) => {
         res.render('error', {
-          message: 'Ошибка во время получения ветвей',
+          message: 'An error occurred while getting the branches',
           error,
         });
       });
