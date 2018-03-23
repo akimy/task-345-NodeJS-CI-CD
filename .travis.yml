@@ -3,14 +3,12 @@ language: node_js
 node_js:
   - '9'
 
-before_script:
-  - npm i
+install:
+  - npm install
 script:
-  - npm run lint
-  - npm run stylelint
-  - npm run test
-  - npm run build
-
+  - bundle exec npm run test
+  - bundle exec npm run lint
+  - bundle exec npm run stylelint
 
 aliases:
   deploy: &deploy
