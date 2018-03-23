@@ -7,11 +7,6 @@ install:
 - npm install
 
 aliases:
-  script: &script
-    - npm run test
-    - npm run lint
-    - npm run stylelint
-    - npm run build
   deploy: &deploy
     provider: heroku
     api_key:
@@ -26,7 +21,10 @@ jobs:
     - stage: Deploy (development)
       if: tag IS blank
       script:
-      - <<: *script
+      - npm run test
+      - npm run lint
+      - npm run stylelint
+      - npm run build
       deploy:
         <<: *deploy
         on:
@@ -35,7 +33,10 @@ jobs:
     - stage: Deploy (production)
       if: tag IS present
       script:
-      - <<: *script
+      - npm run test
+      - npm run lint
+      - npm run stylelint
+      - npm run build
       deploy:
         <<: *deploy
         on:
