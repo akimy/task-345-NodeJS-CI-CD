@@ -189,6 +189,6 @@ class GitHelper {
   }
 }
 
-const git = new GitHelper(exec, process.env.LOCAL_PATH_TO_REPO);
+const git = new GitHelper(exec, process.env.LOCAL_PATH_TO_REPO || 'repository');
 
 module.exports = git;
