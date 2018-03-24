@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const git = require('./stabs/gitHelperStub');
 
+/* eslint-disable no-alert, no-tabs */
 describe('GIT HELPER CLASS', () => {
   describe('Проверяем функцию парсинга строк и удаления пустых строк', () => {
     it('Парсит несколько строк в массив', () => {
@@ -120,9 +121,7 @@ describe('GIT HELPER CLASS', () => {
 
   describe('Метод для парсинга директорий', () => {
     it('Возвращает массив объектов из пар значений хеш, тип, название', () => {
-      // eslint-disable-next-line no-tabs
       const rowString = '100644 blob 93f13619916123cf5434dab2ffcc8263c7420af1	.dockerignore\n' +
-      // eslint-disable-next-line no-tabs
         '100644 blob 6e2e2875bc008c88feeb889d4281f5a7c64dd4bb	.eslintignore';
       const expected = [{
         type: 'blob',
@@ -182,6 +181,52 @@ describe('GIT HELPER CLASS', () => {
       const result = await git.getBranches(hash);
 
       expect(result).to.deep.equal(expected);
+    });
+  });
+
+  describe('Метод для получения директорий через child_process', () => {
+    it('Получает распарсенные данные о директориях из stdout git-cli', async () => {
+      const hash = '#TESTHASH';
+      const expected = [{
+        type: 'blob',
+        hash: '0222efa58d0499f44bc655ddd64a9ffdcd0f1f21',
+        name: 'package.json',
+      },
+      {
+        type: 'tree',
+        hash: 'cd237d6c2c1ed03577c968517bb525b74916ca7a',
+        name: 'src',
+      },
+      {
+        type: 'blob',
+        hash: '7157cd35769f9c918a287b8d3d7030bdedf7998b',
+        name: 'webpack.config.js',
+      }];
+
+      const result = await git.getDir(hash);
+
+      expect(result).to.deep.equal(expected);
+    });
+  });
+
+  describe('Метод для получения графа через child_process', () => {
+    it('Получает row data из stdout git-cli', async () => {
+      const expected = 'some graph data';
+
+      const result = await git.getGraph();
+
+      expect(result).to.equal(expected);
+    });
+  });
+
+  describe('Метод для получения данных файла через child_process', () => {
+    it('Получает row data из stdout git-cli', async () => {
+      const hash = '#TESTHASH';
+      const expected = 'some file data';
+
+      const result = await git.getFileData(hash);
+
+      expect(result).to.equal(expected);
     });
   });
 });
