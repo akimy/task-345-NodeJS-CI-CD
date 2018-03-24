@@ -164,22 +164,22 @@ describe('GIT HELPER CLASS', () => {
   });
 
   describe('Метод для получения бранчей через child_process', () => {
-    it('Получает распарсенные коммиты из stdout git-cli', async () => {
+    it('Получает распарсенные данные о ветвях из stdout git-cli', async () => {
       const hash = '#TESTHASH';
       const expected = [{
-        hash: '359a034',
-        message: 'nonvalidated',
-        author: 'Alexander Vaganov',
-        date: '2018-03-24',
+        current: false,
+        name: 'master',
+        hash: '6250a9b',
+        message: 'Revert "configure project for migration to React"',
       },
       {
-        hash: '895fe48',
-        message: 'try another alias',
-        author: 'Alexander Vaganov',
-        date: '2018-03-24',
+        current: true,
+        name: 'migration_to_react',
+        hash: '34942c2',
+        message: 'styled-components was added / font loader',
       }];
 
-      const result = await git.getCommits(hash);
+      const result = await git.getBranches(hash);
 
       expect(result).to.deep.equal(expected);
     });
