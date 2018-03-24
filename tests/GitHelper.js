@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const git = require('./stabs/gitHelperStub');
 
 /* eslint-disable no-alert, no-tabs */
-describe('GIT HELPER CLASS', () => {
+describe('GIT helper', () => {
   describe('Проверяем функцию парсинга строк и удаления пустых строк', () => {
     it('Парсит несколько строк в массив', () => {
       const rawString = 'In the middle of the journey of our life\n' +
