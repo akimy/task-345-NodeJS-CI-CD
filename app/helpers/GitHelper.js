@@ -103,6 +103,7 @@ class GitHelper {
     return new Promise((resolve, reject) => {
       this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`, {
         cwd: this.path,
+        maxBuffer: 1024 * 5000,
       })
         .then((res) => {
           resolve(this.parseCommits(res.stdout));
@@ -121,6 +122,7 @@ class GitHelper {
     return new Promise((resolve, reject) => {
       this.exec('git branch -v', {
         cwd: this.path,
+        maxBuffer: 1024 * 5000,
       })
         .then((res) => {
           this.branches = this.parseBranches(res.stdout);
@@ -140,6 +142,7 @@ class GitHelper {
     return new Promise((resolve, reject) => {
       this.exec(`git ls-tree --full-name ${hash}`, {
         cwd: this.path,
+        maxBuffer: 1024 * 5000,
       })
         .then((res) => {
           const dir = this.parseDir(res.stdout);
@@ -159,6 +162,7 @@ class GitHelper {
     return new Promise((resolve, reject) => {
       this.exec('git log --graph --oneline --all', {
         cwd: this.path,
+        maxBuffer: 1024 * 5000,
       })
         .then((res) => {
           resolve(res.stdout);
@@ -178,6 +182,7 @@ class GitHelper {
     return new Promise((resolve, reject) => {
       this.exec(`git cat-file blob ${hash}`, {
         cwd: this.path,
+        maxBuffer: 1024 * 5000,
       })
         .then((res) => {
           resolve(res.stdout);
