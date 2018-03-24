@@ -7,7 +7,6 @@ describe('GIT HELPER CLASS', () => {
       const rawString = 'In the middle of the journey of our life\n' +
       'I came to myself, in a dark wood\n' +
       'where the direct way was lost';
-
       const expectedArr = [
         'In the middle of the journey of our life',
         'I came to myself, in a dark wood',
@@ -22,9 +21,8 @@ describe('GIT HELPER CLASS', () => {
     it('Удаляет пустые строки', () => {
       const rawString = 'In the middle of the journey of our life\n' +
       '\n\nI came to myself, in a dark wood\n' +
-      'where the direct way was lost\n' +
+      'where the direct way was lost\n\n' +
       '';
-
       const expectedArr = [
         'In the middle of the journey of our life',
         'I came to myself, in a dark wood',
@@ -32,6 +30,7 @@ describe('GIT HELPER CLASS', () => {
       ];
 
       const arr = git.splitByReturnCarretAndFilterEmptyRows(rawString);
+
       expect(arr).to.deep.equal(expectedArr);
     });
   });
