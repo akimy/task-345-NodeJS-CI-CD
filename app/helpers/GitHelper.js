@@ -10,8 +10,9 @@ class GitHelper {
    * Устанавливает в локальную область видимости функцию exec
    * @param {Function} exec
   */
-  constructor(exec) {
+  constructor(exec, path) {
     this.exec = exec;
+    this.path = `./${path}`;
   }
 
   /**
@@ -101,7 +102,7 @@ class GitHelper {
   getCommits(hash) {
     return new Promise((resolve, reject) => {
       this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`, {
-        cwd: './repository',
+        cwd: this.path,
       })
         .then((res) => {
           resolve(this.parseCommits(res.stdout));
@@ -119,7 +120,7 @@ class GitHelper {
   getBranches() {
     return new Promise((resolve, reject) => {
       this.exec('git branch -v', {
-        cwd: './repository',
+        cwd: this.path,
       })
         .then((res) => {
           this.branches = this.parseBranches(res.stdout);
@@ -138,7 +139,7 @@ class GitHelper {
   getDir(hash) {
     return new Promise((resolve, reject) => {
       this.exec(`git ls-tree --full-name ${hash}`, {
-        cwd: './repository',
+        cwd: this.path,
       })
         .then((res) => {
           const dir = this.parseDir(res.stdout);
@@ -157,7 +158,7 @@ class GitHelper {
   getGraph() {
     return new Promise((resolve, reject) => {
       this.exec('git log --graph --oneline --all', {
-        cwd: './repository',
+        cwd: this.path,
       })
         .then((res) => {
           resolve(res.stdout);
@@ -176,7 +177,7 @@ class GitHelper {
   getFileData(hash) {
     return new Promise((resolve, reject) => {
       this.exec(`git cat-file blob ${hash}`, {
-        cwd: './repository',
+        cwd: this.path,
       })
         .then((res) => {
           resolve(res.stdout);
@@ -188,6 +189,6 @@ class GitHelper {
   }
 }
 
-const git = new GitHelper(exec);
+const git = new GitHelper(exec, process.env.LOCAL_PATH_TO_REPO);
 
 module.exports = git;
