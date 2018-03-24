@@ -32,7 +32,6 @@ describe('GIT HELPER CLASS', () => {
       ];
 
       const arr = git.splitByReturnCarretAndFilterEmptyRows(rawString);
-
       expect(arr).to.deep.equal(expectedArr);
     });
   });
