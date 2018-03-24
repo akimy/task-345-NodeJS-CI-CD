@@ -4,7 +4,7 @@
   "description": "NodeJS, CI, CD",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests --reporter spec",
+    "test": "nyc mocha ./tests --reporter spec",
     "lint": "eslint .",
     "stylelint": "stylelint \"**/*.scss\"",
     "nodemon": "nodemon ./bin/www",
@@ -53,6 +53,7 @@
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.2",
+    "nyc": "^11.6.0",
     "postcss-loader": "^2.1.2",
     "sass-loader": "^6.0.7",
     "stylelint": "^9.1.3",
@@ -66,5 +67,11 @@
       "pre-commit": "npm run lint",
       "pre-push": "npm-run-all --parallel lint stylelint test"
     }
+  },
+  "nyc": {
+    "exclude": [
+      "tests/**/*.js",
+      "public"
+    ]
   }
 }

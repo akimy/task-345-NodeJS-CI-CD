@@ -1,3 +1,5 @@
 ./node_modules
-/public/*
-/repository/*
+/public/
+/repository/
+/coverage
+/.nyc_output
