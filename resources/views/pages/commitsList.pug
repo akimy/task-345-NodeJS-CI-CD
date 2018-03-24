@@ -2,18 +2,18 @@ extends ../layout
 
 block content
   h1= title
-  a(href="/").navigation-link < return to branch list
-  span.navigation-link.navigation-link__back < back
+  a(href="/").navigation-link < вернуться к списку веток
+  span.navigation-link.navigation-link__back < назад
   if (commits && commits.length > 0)
     table.commits
       thead.commits__head
         tr
           th #
-          th Hash
-          th Message
-          th Author
-          th Date
-          th File System
+          th Хеш
+          th Сообщение
+          th Автор
+          th Дата
+          th Файловая система
       if (commits && commits.length > 0)
         tbody
           each commit, i in commits
@@ -24,4 +24,4 @@ block content
               td.commits__author= commit.author
               td.commits__date= commit.date
               td
-                a(href=`/dir/${commit.hash}`) Link
+                a(href=`/dir/${commit.hash}`) Ссылка

@@ -1,6 +1,11 @@
 {
   "name": "task-345-NodeJS-CI-CD",
   "scripts": {
+    "postdeploy": [
+      "npm run lint",
+      "npm run stylelint",
+      "npm run test"
+    ]
   },
   "env": {
   },

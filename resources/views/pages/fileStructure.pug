@@ -2,14 +2,14 @@ extends ../layout
 
 block content
   h1= title
-  a(href="/").navigation-link < return to branch list
-  span.navigation-link.navigation-link__back < back
+  a(href="/").navigation-link < вернуться к списку веток
+  span.navigation-link.navigation-link__back < назад
   if (dirs && dirs.length > 0)
     ul.dir
       each dir in dirs
         li.dir__item
           span.dir__emblem-dir
-            | DIR
+            | КАТАЛОГ
           a(href=`/dir/${dir.hash}`).dir__item-link
             = dir.name
   if (files && files.length > 0)
@@ -17,6 +17,6 @@ block content
       each file in files
         li.dir__item
           span.dir__emblem-file
-              | F
+              | ФАЙЛ
           a(href=`/files/${file.hash}`).dir__item-link
             = file.name

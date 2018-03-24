@@ -6,11 +6,11 @@ block content
     thead.branches__head
       tr
         th
-        th Branch Name
-        th Last commit
-        th Last commit message
-        th File System
-        th Commits
+        th Имя ветви
+        th Последний коммит
+        th Сообщение последнего коммита
+        th Файловая система
+        th Коммиты
     if (branches && branches.length > 0)
       tbody
         each branch in branches
@@ -22,7 +22,7 @@ block content
             td= branch.hash
             td= branch.message
             td
-              a(href=`/dir/${branch.hash}`) Link
+              a(href=`/dir/${branch.hash}`) Ссылка
             td
-              a(href=`/commits/${branch.hash}`) Link
+              a(href=`/commits/${branch.hash}`) Ссылка
   pre.graph= graph
