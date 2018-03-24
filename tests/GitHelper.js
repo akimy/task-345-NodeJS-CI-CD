@@ -1,9 +1,10 @@
 const { expect } = require('chai');
 const git = require('./stabs/gitHelperStub');
+const { HASH } = require('./constants');
 
 /* eslint-disable no-alert, no-tabs */
 describe('GIT helper', () => {
-  describe('Проверяем функцию парсинга строк и удаления пустых строк', () => {
+  describe('splitByReturnCarretAndFilterEmptyRows', () => {
     it('Парсит несколько строк в массив', () => {
       const rawString = 'In the middle of the journey of our life\n' +
       'I came to myself, in a dark wood\n' +
@@ -36,7 +37,7 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод дробящий строки для парсинга ветвей', () => {
+  describe('getBranchDataFromString', () => {
     it('Возвращает объект из пар значений трех элементов, имя, хеш последнего коммита и сообщение', () => {
       const initialArr = ['NAME', '#32123', 'This', 'is', 'message'];
       const expected = {
@@ -50,7 +51,7 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для парсинга ветвей', () => {
+  describe('parseBranches', () => {
     it('Возвращает массив объектов из пар значений четырех элементов о текущих ветках + указатель', () => {
       const rowString = '  master             6250a9b Revert "configure project for migration to React"\n' +
       '* migration_to_react 34942c2 styled-components was added / font loader';
@@ -84,7 +85,7 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для парсинга коммитов', () => {
+  describe('parseCommits', () => {
     it('Возвращает массив объектов с 4 парами ключ-значение: хеш, сообщение, автор и дата', () => {
       const rowString = '359a034|nonvalidated|Alexander Vaganov|2018-03-24\n' +
         '895fe48|try another alias|Alexander Vaganov|2018-03-24';
@@ -107,7 +108,7 @@ describe('GIT helper', () => {
       expect(result).to.deep.equal(expected);
     });
 
-    it('Возвращает валидный формат даты-времени', () => {
+    it('Возвращает валидный формат даты-времени в коммите', () => {
       const rowString = '359a034|nonvalidated|Alexander Vaganov|2018-03-24\n';
 
       const expected = true;
@@ -119,8 +120,8 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для парсинга директорий', () => {
-    it('Возвращает массив объектов из пар значений хеш, тип, название', () => {
+  describe('parseDir', () => {
+    it('Возвращает массив объектов из пар значений хеш, тип, название для директорий', () => {
       const rowString = '100644 blob 93f13619916123cf5434dab2ffcc8263c7420af1	.dockerignore\n' +
         '100644 blob 6e2e2875bc008c88feeb889d4281f5a7c64dd4bb	.eslintignore';
       const expected = [{
@@ -140,9 +141,9 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для получения коммитов через child_process', () => {
+  describe('getCommits', () => {
     it('Получает распарсенные коммиты из stdout git-cli', async () => {
-      const hash = '#TESTHASH';
+      const hash = HASH;
       const expected = [{
         hash: '359a034',
         message: 'nonvalidated',
@@ -162,9 +163,9 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для получения бранчей через child_process', () => {
+  describe('getBranches', () => {
     it('Получает распарсенные данные о ветвях из stdout git-cli', async () => {
-      const hash = '#TESTHASH';
+      const hash = HASH;
       const expected = [{
         current: false,
         name: 'master',
@@ -184,9 +185,9 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для получения директорий через child_process', () => {
+  describe('getDir', () => {
     it('Получает распарсенные данные о директориях из stdout git-cli', async () => {
-      const hash = '#TESTHASH';
+      const hash = HASH;
       const expected = [{
         type: 'blob',
         hash: '0222efa58d0499f44bc655ddd64a9ffdcd0f1f21',
@@ -209,8 +210,8 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для получения графа через child_process', () => {
-    it('Получает row data из stdout git-cli', async () => {
+  describe('getGraph', () => {
+    it('Получает row data из stdout git-cli для построения графа', async () => {
       const expected = 'some graph data';
 
       const result = await git.getGraph();
@@ -219,9 +220,9 @@ describe('GIT helper', () => {
     });
   });
 
-  describe('Метод для получения данных файла через child_process', () => {
+  describe('getFileData', () => {
     it('Получает row data из stdout git-cli', async () => {
-      const hash = '#TESTHASH';
+      const hash = HASH;
       const expected = 'some file data';
 
       const result = await git.getFileData(hash);

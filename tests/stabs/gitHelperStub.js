@@ -1,6 +1,5 @@
 const git = require('../../app/helpers/GitHelper');
-
-const HASH = '#TESTHASH';
+const { HASH } = require('../constants');
 
 /* eslint-disable no-alert, no-tabs */
 const exec = (command) => {
