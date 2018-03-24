@@ -6,6 +6,11 @@ const filesController = require('../app/controllers/FilesController');
 
 const router = express.Router();
 
+/**
+ * Роутинг по приложению. Каждый GET запрос обрабатывается контроллерами в папке
+ * /app/controllers/*
+ */
+
 router.get('/', (req, res) => {
   branchController.getBranchesList(req, res);
 });
