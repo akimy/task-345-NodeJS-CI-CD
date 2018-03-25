@@ -18,7 +18,8 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 ```docker-compose build```
 ```docker-compose up```
 Если в терминал выходит ошибка  
-```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки
+```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки  
+
 2. С помощью Node - сервера:
   
 а)
