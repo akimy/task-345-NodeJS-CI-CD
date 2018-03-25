@@ -1,5 +1,6 @@
 import '../scss/index.scss';
 import '../images/favicon.png';
+import someFunction from './something';
 
 document.addEventListener('DOMContentLoaded', () => {
   const backLink = document.querySelector('.navigation-link__back');
@@ -8,5 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.history.back();
     });
   }
-});
 
+  someFunction('ES6 импорты работают');
+});
