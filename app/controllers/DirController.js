@@ -31,7 +31,7 @@ class DirController {
       const dirs = this.lexicalSort(fileStructure.filter(el => el.type === 'tree'));
       const files = this.lexicalSort(fileStructure.filter(el => el.type !== 'tree'));
       res.render('pages/fileStructure', {
-        title: 'CATALOG TREE',
+        title: 'ДЕРЕВО ФАЙЛОВ',
         dirs,
         files,
       });

@@ -19,7 +19,7 @@ class BranchController {
     return Promise.all([this.git.getBranches(), this.git.getGraph()])
       .then(([branches, graph]) => {
         res.render('pages/branches', {
-          title: 'BRANCHES',
+          title: 'ВЕТВИ',
           branches,
           graph,
         });

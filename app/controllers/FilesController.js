@@ -20,7 +20,7 @@ class FilesController {
     try {
       const fileData = await this.git.getFileData(hash);
       res.render('pages/fileData', {
-        title: 'FILE DATA',
+        title: 'ДАННЫЕ ФАЙЛА',
         fileData,
       });
     } catch (error) {

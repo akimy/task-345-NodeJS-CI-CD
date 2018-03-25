@@ -20,7 +20,7 @@ class CommitsController {
     try {
       const commits = await this.git.getCommits(hash);
       res.render('pages/commitsList', {
-        title: 'COMMITS',
+        title: 'КОММИТЫ',
         commits,
       });
     } catch (error) {
