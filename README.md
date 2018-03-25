@@ -20,7 +20,6 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 Если в терминал выходит ошибка  
 ```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки
 
-
 2. С помощью Node - сервера:
   
 а)
@@ -34,7 +33,7 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 sh getbranches.sh
 ```    
 
-г) ```npm run buid```Собираем клиенсткий JS и CSS  
+г) ```npm run build```Собираем клиенсткий JS и CSS  
 
 д)
 ```npm run start``` Поднимаем сервер (по умолчанию слушает http://127.0.0.1:3000)
