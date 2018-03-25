@@ -1,6 +1,10 @@
 version: '3'
 services:
-  git:
+  web:
     build: .
+    command: npm run start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
     ports:
-      - "3030:3000"
+      - "3000:3000"

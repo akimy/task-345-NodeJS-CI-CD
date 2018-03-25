@@ -13,6 +13,5 @@ RUN for branch in  `git --git-dir ./repository/.git branch -r | grep -v 'HEAD\|m
 RUN npm install
 COPY . .
 RUN npm run build
-
 EXPOSE $PORT
 CMD npm start
