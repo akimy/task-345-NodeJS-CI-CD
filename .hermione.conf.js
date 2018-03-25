@@ -4,12 +4,18 @@ module.exports = {
 
   sets: {
       desktop: {
-          files: 'tests/desktop'
+          files: 'tests/desktop',
+          browsers: ['chrome', 'ff']
       }
   },
 
   browsers: {
       chrome: {
+          desiredCapabilities: {
+              browserName: 'chrome'
+          }
+      },
+      ff: {
           desiredCapabilities: {
               browserName: 'chrome'
           }

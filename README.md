@@ -27,12 +27,11 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 ```npm install```  
 
 б) ```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
-  
 
 в)
 Баш-скрипт для автотрекинга всех веток в репозитории (получаем их локально)
-```bash
-for branch in  `git --git-dir ./repository/.git branch -r | grep -v 'HEAD\|master'`; do git --git-dir ./repository/.git branch --track ${branch##*/} $branch; done
+```
+sh getbranches.sh
 ```    
 
 г) ```npm run buid```Собираем клиенсткий JS и CSS  
