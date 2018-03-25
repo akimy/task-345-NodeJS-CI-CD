@@ -15,7 +15,8 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 #### Инструкция по установке приложения
 
 ~~1. С помощью docker
-```docker-compose up --build```
+```docker-compose build```
+```docker-compose up```
 Если в терминал выходит ошибка  
 ```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки
 2. С помощью Node - сервера:
@@ -41,6 +42,7 @@ for branch in  `git --git-dir ./repository/.git branch -r | grep -v 'HEAD\|maste
 В задании было необходимо настроить сборщик файлов (webpack). Несколько режимов сборки (dev/prod), pipeline на хероку со стендом при пулл-реквесте, staging и production - стендом при пуше в репозиторий с аннотированным тегом.
 
 Ссылки:
+* https://dashboard.heroku.com/pipelines/542e27b0-8bc5-4b7c-afad-ef7e1e2ff5b8 - pipeline
 * https://travis-ci.org/akimy/task-345-NodeJS-CI-CD/branches - билды в Travis.
 * https://yandex-shri-task-456-pr-4.herokuapp.com/ - staging с пулл-реквеста с русскими заголовками.
 * https://yandex-shri-task-456.herokuapp.com/ - staging для development сборок (без тега).
