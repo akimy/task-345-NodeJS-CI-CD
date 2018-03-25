@@ -18,7 +18,8 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 ```docker-compose build```
 ```docker-compose up```
 Если в терминал выходит ошибка  
-```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки  
+```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки
+
 
 2. С помощью Node - сервера:
   
@@ -53,9 +54,9 @@ for branch in  `git --git-dir ./repository/.git branch -r | grep -v 'HEAD\|maste
 * Docker - контейниризация
 * husky - для GIT хуков 
 * postcss - autoprefix
-* uflifyjsplugin - минификация клиентского JS
+* uglifyjsplugin - минификация клиентского JS
 * линтеры - eslint, stylelint
-* nodemov - для перезагрузки Express в dev режиме при изменении серверного кода.
+* nodemon - для перезагрузки Express в dev режиме при изменении серверного кода.
 
 Какие возникли сложности:
 https://github.com/mrmlnc/les-reponses-sur-devoirs - как пример репозитория содержит много ошибок
