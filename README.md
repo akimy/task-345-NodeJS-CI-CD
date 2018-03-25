@@ -37,6 +37,8 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 #### Инфраструктура.
 В задании было необходимо настроить сборщик файлов (webpack). Несколько режимов сборки (dev/prod), pipeline на хероку со стендом при пулл-реквесте, staging и production - стендом при пуше в репозиторий с аннотированным тегом.
 
+![imgur](https://i.imgur.com/cdWAJNt.png)
+
 Ссылки:
 * https://dashboard.heroku.com/pipelines/542e27b0-8bc5-4b7c-afad-ef7e1e2ff5b8 - pipeline
 * https://travis-ci.org/akimy/task-345-NodeJS-CI-CD/branches - билды в Travis.
