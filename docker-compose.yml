@@ -1,10 +1,13 @@
-version: '3'
+version: '2'
+
 services:
-  web:
-    build: .
-    command: npm run start
-    volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
-    ports:
-      - "3000:3000"
+    node:
+        build: .
+        working_dir: /usr/src/app/
+        expose:
+            - "8000"
+        volumes:
+            - "./:/usr/src/app"
+        tty: true
+        extra_hosts:
+          - "akimy.local:172.17.0.1"

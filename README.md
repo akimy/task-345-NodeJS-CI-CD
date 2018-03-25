@@ -23,22 +23,19 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 а)
 ```npm install```  
 
-```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
+б) ```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
   
 
-б)
+в)
 Баш-скрипт для автотрекинга всех веток в репозитории (получаем их локально)
 ```bash
 for branch in  `git --git-dir ./repository/.git branch -r | grep -v 'HEAD\|master'`; do git --git-dir ./repository/.git branch --track ${branch##*/} $branch; done
 ```    
 
-в)   
-```npm run buid```
-Собираем клиенсткий JS и CSS
+г) ```npm run buid```Собираем клиенсткий JS и CSS  
 
-г)
-```npm run start```
-Поднимаем сервер (по умолчанию слушает http://127.0.0.1:3000)
+д)
+```npm run start``` Поднимаем сервер (по умолчанию слушает http://127.0.0.1:3000)
 
 #### Инфраструктура.
 В задании было необходимо настроить сборщик файлов (webpack). Несколько режимов сборки (dev/prod), pipeline на хероку со стендом при пулл-реквесте, staging и production - стендом при пуше в репозиторий с аннотированным тегом.
