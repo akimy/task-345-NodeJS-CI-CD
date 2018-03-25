@@ -2,15 +2,15 @@ extends ../layout
 
 block content
   h1= title
-  a(href="/").navigation-link < return to branch list
-  span.navigation-link.navigation-link__back < back
+  a(href="/").navigation-link.navigation-link_main-page < return to branch list
+  span.navigation-link.navigation-link_back < back
   if (dirs && dirs.length > 0)
     ul.dir
       each dir in dirs
         li.dir__item
           span.dir__emblem-dir
             | DIR
-          a(href=`/dir/${dir.hash}`).dir__item-link
+          a(href=`/dir/${dir.hash}`).dir__item-link.dir__item-link_dir
             = dir.name
   if (files && files.length > 0)
     ul.dir
@@ -18,5 +18,5 @@ block content
         li.dir__item
           span.dir__emblem-file
               | F
-          a(href=`/files/${file.hash}`).dir__item-link
+          a(href=`/files/${file.hash}`).dir__item-link.dir__item-link_file
             = file.name

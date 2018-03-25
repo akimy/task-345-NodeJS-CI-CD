@@ -1,11 +1,13 @@
 module.exports = {
-  baseUrl: 'https://yandex-shri-task-456.herokuapp.com/',
+  //baseUrl: 'https://yandex-shri-task-456.herokuapp.com/',
+  baseUrl: 'http://localhost:3000',
   gridUrl: 'http://0.0.0.0:4444/wd/hub',
 
   sets: {
       desktop: {
           files: 'tests/desktop',
-          browsers: ['chrome', 'ff']
+          //browsers: ['chrome', 'ff']
+          browsers: ['chrome']
       }
   },
 
@@ -15,10 +17,10 @@ module.exports = {
               browserName: 'chrome'
           }
       },
-      ff: {
-          desiredCapabilities: {
-              browserName: 'chrome'
-          }
-      }
+      // ff: {
+      //     desiredCapabilities: {
+      //         browserName: 'firefox'
+      //     }
+      // }
   }
 };

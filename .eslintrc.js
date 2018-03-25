@@ -25,5 +25,6 @@ module.exports = {
         "URL": true,
         "describe": true,
         "it": true,
+        "beforeEach": true,
     }
 };

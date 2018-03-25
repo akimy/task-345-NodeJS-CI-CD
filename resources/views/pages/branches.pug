@@ -14,7 +14,7 @@ block content
     if (branches && branches.length > 0)
       tbody
         each branch in branches
-          tr
+          tr.branches__list
             td.branches__pointer
               if (branch.current)
                 | ->
@@ -22,7 +22,7 @@ block content
             td= branch.hash
             td= branch.message
             td
-              a(href=`/dir/${branch.hash}`) Link
+              a(href=`/dir/${branch.hash}`).branches__dir-link Link
             td
-              a(href=`/commits/${branch.hash}`) Link
+              a(href=`/commits/${branch.hash}`).branches__commits-link Link
   pre.graph= graph

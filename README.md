@@ -14,16 +14,16 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 * docker-compose - version 1.19.0
 #### Инструкция по установке приложения
 
-~~1. С помощью docker
-```docker-compose build```
-```docker-compose up```
-Если в терминал выходит ошибка  
-```Couldn't connect to Docker daemon - you might need to run 'docker-machine start default'``` наберите команду в шелле ```eval $(docker-machine env default)```~~ я что-то поменял и все сломал возникли ошибки
+1. С помощью docker
+а) ```docker build -t akimy .```  
+б) ```docker run -p 4000:80 akimy```  
+в) ```docker-machine ip``` - узнаем IP   
+г) приложение доступно по указанному IP на 4000 порту
+д) удалить приложение ```docker container ls``` ```docker container stop ${Container ID}```
 
 2. С помощью Node - сервера:
   
-а)
-```npm install```  
+а) ```npm install```  
 
 б) ```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
 
@@ -31,8 +31,7 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 
 г) ```npm run build``` Собираем клиенсткий JS и CSS  
 
-д)
-```npm run start``` Поднимаем сервер (по умолчанию слушает http://127.0.0.1:3000)
+д) ```sudo npm run start``` Поднимаем сервер Express (по умолчанию слушает http://0.0.0.0:80 || http://127.0.0.1)
 
 #### Инфраструктура.
 В задании было необходимо настроить сборщик файлов (webpack). Несколько режимов сборки (dev/prod), pipeline на хероку со стендом при пулл-реквесте, staging и production - стендом при пуше в репозиторий с аннотированным тегом.
