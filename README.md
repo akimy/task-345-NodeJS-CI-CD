@@ -11,27 +11,21 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 * Node - v.9
 * Java - v.1.8.0_162
 * Docker - version 18.02.0-ce
-* docker-compose - version 1.19.0
 #### Инструкция по установке приложения
 
 1. С помощью docker
-а) ```docker build -t akimy .```  
-б) ```docker run -p 4000:80 akimy```  
-в) ```docker-machine ip``` - узнаем IP   
-г) приложение доступно по указанному IP на 4000 порту
-д) удалить приложение ```docker container ls``` ```docker container stop ${Container ID}```
+  1. ```docker build -t akimy .```  
+  2. ```docker run -p 4000:3000 akimy```  
+  3. ```docker-machine ip``` - узнаем IP   
+  4. приложение доступно по указанному IP на 4000 порту
+  5. удалить приложение ```docker container ls``` ```docker container stop ${Container ID}```
 
 2. С помощью Node - сервера:
-  
-а) ```npm install```  
-
-б) ```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
-
-в)```sh getbranches.sh``` Баш-скрипт для автотрекинга всех веток в репозитории (получаем их локально)   
-
-г) ```npm run build``` Собираем клиенсткий JS и CSS  
-
-д) ```sudo npm run start``` Поднимаем сервер Express (по умолчанию слушает http://0.0.0.0:80 || http://127.0.0.1)
+  1. ```npm install```  
+  2. ```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
+  3. ```sh getbranches.sh``` Баш-скрипт для автотрекинга всех веток в репозитории (получаем их локально
+  4. ```npm run build``` Собираем клиенсткий JS и CSS  
+  5. ```sudo npm run start``` Поднимаем сервер Express (по умолчанию слушает http://0.0.0.0:3000 || http://127.0.0.1:3000)
 
 #### Инфраструктура.
 В задании было необходимо настроить сборщик файлов (webpack). Несколько режимов сборки (dev/prod), pipeline на хероку со стендом при пулл-реквесте, staging и production - стендом при пуше в репозиторий с аннотированным тегом.
