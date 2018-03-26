@@ -2,7 +2,6 @@ FROM node:9
 
 ENV LOCAL_PATH_TO_REPO repository
 ENV REPOSITORY_LINK https://github.com/mrmlnc/micromatch.git
-ENV PORT 3000
 
 RUN mkdir -p /usr/src/app/
 WORKDIR /usr/src/app/
