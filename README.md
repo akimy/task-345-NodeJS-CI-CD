@@ -13,14 +13,14 @@ NodeJS Непрерывная интеграция, Деплой, Тесты
 * Docker - version 18.02.0-ce
 #### Инструкция по установке приложения
 
-1. С помощью docker
+###### С помощью docker
   1. ```docker build -t akimy .```  
   2. ```docker run -p 4000:3000 akimy```  
   3. ```docker-machine ip``` - узнаем IP   
   4. приложение доступно по указанному IP на 4000 порту
   5. удалить приложение ```docker container ls``` ```docker container stop ${Container ID}```
 
-2. С помощью Node - сервера:
+###### С помощью Node - сервера:
   1. ```npm install```  
   2. ```git clone https://github.com/mrmlnc/micromatch.git repository``` - может быть любой репозиторий (для приложения который будет отображаться в интерфейсе)
   3. ```sh getbranches.sh``` Баш-скрипт для автотрекинга всех веток в репозитории (получаем их локально

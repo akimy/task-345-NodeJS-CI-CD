@@ -25,7 +25,7 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, '0.0.0.0');
+server.listen(port, process.env.HE_HOST || '0.0.0.0');
 server.on(
   'error',
   onError,
