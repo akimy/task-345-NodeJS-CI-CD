@@ -9,13 +9,11 @@ const exec = (command) => {
         stdout: '359a034|nonvalidated|Alexander Vaganov|2018-03-24\n' +
         '895fe48|try another alias|Alexander Vaganov|2018-03-24',
       });
-
     case 'git branch -v':
       return Promise.resolve({
         stdout: '  master             6250a9b Revert "configure project for migration to React"\n' +
         '* migration_to_react 34942c2 styled-components was added / font loader',
       });
-
     case 'git ls-tree --full-name #TESTHASH':
       return Promise.resolve({
         stdout:
@@ -30,7 +28,7 @@ const exec = (command) => {
     case 'git log --graph --oneline --all':
       return Promise.resolve({ stdout: 'some graph data' });
     default:
-      return Promise.resolve('Command not register');
+      return Promise.reject(new Error('Invalid hash or command'));
   }
 };
 

@@ -52,4 +52,17 @@ describe('Directory Controller', () => {
 
     expect(result).to.equal(expected);
   });
+
+  it('Рендерит страницу ошибки при невалидном хеше', async () => {
+    const req = {
+      params: { hash: '#INVALIDAHASH' },
+    };
+    const res = new ResponseMock();
+    const expected = 'error';
+
+    await dirController.getFileStructure(req, res);
+    const result = res.getView();
+
+    expect(result).to.equal(expected);
+  });
 });
