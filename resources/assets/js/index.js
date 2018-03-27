@@ -11,4 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   someFunction('ES6 импорты работают');
+  hljs.initHighlightingOnLoad();
 });

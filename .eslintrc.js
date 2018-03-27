@@ -26,5 +26,6 @@ module.exports = {
         "describe": true,
         "it": true,
         "beforeEach": true,
+        "hljs": true,
     }
 };
