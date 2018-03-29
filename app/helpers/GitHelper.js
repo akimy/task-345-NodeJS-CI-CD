@@ -100,18 +100,11 @@ class GitHelper {
    * @returns {Promise} - данные для контроллера
   */
   getCommits(hash) {
-    return new Promise((resolve, reject) => {
-      this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`, {
-        cwd: this.path,
-        maxBuffer: 1024 * 5000,
-      })
-        .then((res) => {
-          resolve(this.parseCommits(res.stdout));
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    return this.exec(`git log ${hash} --pretty="%h|%s|%cn|%cd" --date=short`, {
+      cwd: this.path,
+      maxBuffer: 1024 * 5000,
+    })
+      .then(res => this.parseCommits(res.stdout));
   }
 
   /**
@@ -119,18 +112,11 @@ class GitHelper {
    * @returns {Promise} - данные для контроллера
   */
   getBranches() {
-    return new Promise((resolve, reject) => {
-      this.exec('git branch -v', {
-        cwd: this.path,
-        maxBuffer: 1024 * 5000,
-      })
-        .then((res) => {
-          this.branches = this.parseBranches(res.stdout);
-          resolve(this.branches);
-        }).catch((error) => {
-          reject(error);
-        });
-    });
+    return this.exec('git branch -v', {
+      cwd: this.path,
+      maxBuffer: 1024 * 5000,
+    })
+      .then(res => this.parseBranches(res.stdout));
   }
 
   /**
@@ -139,19 +125,11 @@ class GitHelper {
    * @returns {Promise} - данные для контроллера
   */
   getDir(hash) {
-    return new Promise((resolve, reject) => {
-      this.exec(`git ls-tree --full-name ${hash}`, {
-        cwd: this.path,
-        maxBuffer: 1024 * 5000,
-      })
-        .then((res) => {
-          const dir = this.parseDir(res.stdout);
-          resolve(dir);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    return this.exec(`git ls-tree --full-name ${hash}`, {
+      cwd: this.path,
+      maxBuffer: 1024 * 5000,
+    })
+      .then(res => this.parseDir(res.stdout));
   }
 
   /**
@@ -159,18 +137,10 @@ class GitHelper {
    * @returns {Promise} - данные для контроллера
   */
   getGraph() {
-    return new Promise((resolve, reject) => {
-      this.exec('git log --graph --oneline --all', {
-        cwd: this.path,
-        maxBuffer: 1024 * 5000,
-      })
-        .then((res) => {
-          resolve(res.stdout);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    return this.exec('git log --graph --oneline --all', {
+      cwd: this.path,
+      maxBuffer: 1024 * 5000,
+    }).then(res => res.stdout);
   }
 
   /**
@@ -179,18 +149,11 @@ class GitHelper {
    * @returns {Promise} - данные для контроллера
   */
   getFileData(hash) {
-    return new Promise((resolve, reject) => {
-      this.exec(`git cat-file blob ${hash}`, {
-        cwd: this.path,
-        maxBuffer: 1024 * 5000,
-      })
-        .then((res) => {
-          resolve(res.stdout);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    return this.exec(`git cat-file blob ${hash}`, {
+      cwd: this.path,
+      maxBuffer: 1024 * 5000,
+    })
+      .then(res => res.stdout);
   }
 }
 
